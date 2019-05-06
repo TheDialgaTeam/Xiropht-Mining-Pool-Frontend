@@ -1,0 +1,158 @@
+body, #walletAddress {
+    color: #dddddd;
+    background-color: #333333;
+}
+
+hr {
+    background-color: #dddddd;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 998;
+    transition: all 0.5s ease-in-out;
+}
+
+.topNavigation, .topNavigation .nav-item .nav-link, .topNavigation .nav-item .nav-link:hover, .alert-custom {
+    background-color: darkorange;
+    color: black;
+}
+
+.topNavigation .navbar-brand {
+    background: url(https://cdn.xiropht.com/images/logo-brand.png) center/contain no-repeat;
+    width: 200px;
+    height: 50px;
+}
+
+.sideNavigation {
+    width: 15vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #2d2d2d;
+    transition: all 0.3s;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sideNavigation .nav-item.active {
+    background: #337fc1;
+}
+
+main.container-fluid {
+    padding-left: 16vw;
+}
+
+.infoBox {
+    background-color: darkorange;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    height: 100%;
+}
+
+.infoBox .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 1rem;
+    font-size: 55px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.infoBox .content .text {
+    font-size: 13px;
+    color: black;
+    text-transform: uppercase;
+}
+
+.infoBox .content .value {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.infoBox .content .value .smallText {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.networkLastBlockHash a, .paymentHash a {
+    color: white;
+}
+
+.overlay.active, .walletStatsLoading.active, .walletStats.active {
+    display: block;
+}
+
+.topNavigation .navbar-toggler, .walletStatsLoading, .walletStats {
+    display: none;
+}
+
+.walletStatsLoading .loader {
+    width: 30px;
+}
+
+.walletPaymentInformation {
+    font-size: small;
+}
+
+.paymentHash {
+    max-width: 40vw;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 992px) {
+    .topNavigation .navbar-toggler {
+        display: block;
+        border: 1px solid black;
+    }
+
+    .sideNavigation {
+        width: 25vw;
+        margin-left: -100vw;
+    }
+
+    .sideNavigation.active {
+        margin-left: 0;
+    }
+
+    main.container-fluid {
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .topNavigation .topNavigationHashRate {
+        display: none;
+    }
+
+    .sideNavigation {
+        width: 50vw;
+        margin-left: -100vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .topNavigation .container-fluid {
+        padding-right: 15px;
+    }
+
+    .sideNavigation {
+        width: 75vw;
+        margin-left: -100vw;
+    }
+
+    .paymentHash {
+        max-width: 20vw;
+    }
+}

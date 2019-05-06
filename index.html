@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AGN Xiropht Mining Pool | Dashboard</title>
+
+    <meta content="Unofficial mining pool of xiropht." name="description"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+    <link href="https://cdn.xiropht.com/images/icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+
+    <link href="https://cdn.xiropht.com/images/icons/android-icon-192x192.png" rel="icon" sizes="192x192"
+          type="image/png"/>
+
+    <link href="https://cdn.xiropht.com/images/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+    <link href="https://cdn.xiropht.com/images/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+    <link href="https://cdn.xiropht.com/images/icons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+
+    <link href="https://xir.aggressivegaming.org/index.html" rel="canonical"/>
+
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/extra.css" rel="stylesheet"/>
+</head>
+<body class="mt-5">
+<div class="overlay"></div>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top p-0 topNavigation">
+        <div class="container-fluid">
+            <div class="navbar-brand"></div>
+            <ul class="navbar-nav mr-auto topNavigationHashRate">
+                <li class="nav-item">
+                    <span class="nav-link">Network: <strong><span class="networkHashrate"></span></strong></span>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link">Pool: <strong><span class="poolHashrate"></span></strong></span>
+                </li>
+            </ul>
+            <button aria-label="Toggle navigation" class="navbar-toggler" id="sidebarCollapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <nav class="navbar-dark mt-5 pt-3 sideNavigation">
+        <ul class="navbar-nav flex-column">
+            <li class="nav-item active">
+                <a class="nav-link pl-3" href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pl-3" href="gettingstarted.html"><i class="fas fa-rocket"></i> Getting Started</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pl-3" href="blocks.html"><i class="fas fa-cubes"></i> Pool Blocks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pl-3" href="payments.html"><i class="far fa-money-bill-alt"></i> Payments</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="container-fluid pt-3">
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-custom" role="alert">
+                <p class="mb-0">This website is still in beta test. Expect some bugs that you may face while visiting
+                    this site.</p>
+                <p class="mb-0">Please report any problems and error in Discord. Thank you!</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Pool Hash Rate</div>
+                    <div class="value">
+                        <span class="poolHashrate"></span>
+                        <span class="smallText">(estimated)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Blocks Found</div>
+                    <div class="value">
+                        <span class="poolTotalBlockFound"></span>
+                        <span class="smallText">(<span class="poolLastBlockFoundDateAgo"></span>)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Blocks Found Every</div>
+                    <div class="value">
+                        <span class="poolBlockFoundEvery"></span>
+                        <span class="smallText">(estimated)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-cloud-download-alt"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Version</div>
+                    <div class="value"><span class="version"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Network Hash Rate</div>
+                    <div class="value"><span class="networkHashrate"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-unlock"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Difficulty</div>
+                    <div class="value"><span class="networkDifficulty"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Blockchain Height</div>
+                    <div class="value"><span class="networkHeight"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Last Reward</div>
+                    <div class="value"><span class="networkLastBlockReward"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Connected Miners</div>
+                    <div class="value">
+                        <span class="poolTotalMinerConnected"></span>
+                        <span class="smallText">(<span class="poolTotalWorkerConnected"></span> workers)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Pool Fee</div>
+                    <div class="value"><span class="poolFee"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Minimum Payout</div>
+                    <div class="value"><span class="poolMinimumPayment"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Status</div>
+                    <div class="value"><span class="poolStatus"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-4">
+            <div class="infoBox p-3">
+                <div class="icon">
+                    <i class="fas fa-paw"></i>
+                </div>
+                <div class="content">
+                    <div class="text">Last Hash</div>
+                    <div class="value">
+                        <span class="smallText"><span class="networkLastBlockHash"></span> (<span
+                                class="networkLastBlockFoundTimestampAgo"></span>)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row">
+            <h3>Your Stats & Payment History</h3>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3">
+                <input aria-describedby="button-addon2" aria-label="Wallet Address" class="form-control"
+                       id="walletAddress"
+                       placeholder="Wallet Address"
+                       type="text"/>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-warning" id="lookup" type="button">
+                        <i class="fas fa-search"></i> Lookup
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row walletStatsLoading">
+            <p><img alt="Loading..." class="loader" src="img/loading.gif"/> Loading...</p>
+        </div>
+        <div class="walletStats">
+            <div class="row">
+                <p><i class="fas fa-university"></i> Pending Balance: <span class="walletTotalBalance"></span></p>
+            </div>
+            <div class="row">
+                <p><i class="far fa-money-bill-alt"></i> Total Paid: <span class="walletTotalPaid"></span></p>
+            </div>
+            <div class="row">
+                <p><i class="fas fa-tachometer-alt"></i> Hash Rate: <span class="walletTotalHashrate"></span></p>
+            </div>
+            <div class="row">
+                <p><i class="fas fa-cloud-upload-alt"></i> Total Good Share Submitted: <span
+                        class="walletTotalGoodShare"></span></p>
+            </div>
+            <div class="row">
+                <p><i class="fas fa-file-excel"></i> Total Bad Share Submitted: <span
+                        class="walletTotalInvalidShare"></span></p>
+            </div>
+            <div class="row">
+                <p><i class="far fa-money-bill-alt"></i> Total Payment(s): <span class="walletTotalPayment"></span></p>
+            </div>
+            <div class="row">
+                <h3>Payments</h3>
+            </div>
+            <div class="row">
+                <table class="table table-hover table-dark table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col"><i class="far fa-clock"></i> Date Sent</th>
+                        <th scope="col"><i class="fas fa-paw"></i> Transaction Hash</th>
+                        <th scope="col"><i class="far fa-money-bill-alt"></i> Amount</th>
+                        <th scope="col"><i class="far fa-money-bill-alt"></i> Fee</th>
+                    </tr>
+                    </thead>
+                    <tbody class="walletPaymentInformation">
+                    </tbody>
+                </table>
+            </div>
+            <div class="row justify-content-center">
+                <button class="btn btn-warning" id="loadMore" type="button">Load More</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <footer>
+                <hr/>
+                <p>&copy; 2019 by <a href="https://xiropht.com/">Xiropht.com</a></p>
+                <p>&copy; 2019 by <a href="https://aggressivegaming.org">The Dialga Team</a></p>
+                <p>Design inspired by <a href="https://github.com/dvandal/cryptonote-nodejs-pool" target="_blank"><i
+                        class="fab fa-github"></i> cryptonote-nodejs-pool</a>
+                </p>
+            </footer>
+        </div>
+    </div>
+
+</main>
+<script src="js/external/jquery-3.4.1.min.js"></script>
+<script src="js/external/popper.min.js"></script>
+<script src="js/external/bootstrap.min.js"></script>
+<script src="js/external/js.cookie.js"></script>
+<script src="js/config.js"></script>
+<script src="js/xiropht.js"></script>
+<script src="js/global.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
