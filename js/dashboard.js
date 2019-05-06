@@ -125,11 +125,15 @@
             newRow.appendChild(newDataAmount);
             newRow.appendChild(newDataFee);
 
-            walletPaymentInformation.append(newRow);
+            doInsertionSort(walletPaymentInformation, newRow, walletPaymentMaxToDownload);
         });
     }
 
     function checkWalletPayment() {
+        if (walletAddress.val() == "") {
+            return;
+        }
+
         if (walletPaymentDownloaded === 0) {
             var maxIndex = walletPaymentCurrentMaxIndex;
 
@@ -146,6 +150,10 @@
 
                 getWalletPayment(maxIndex - i);
                 walletPaymentDownloaded++;
+
+                if (walletPaymentDownloaded > walletPaymentMaxToDownload) {
+                    walletPaymentDownloaded = walletPaymentMaxToDownload;
+                }
             }
 
             walletPaymentDownloadedMaxIndex = maxIndex;
@@ -155,13 +163,32 @@
         if (walletPaymentCurrentMaxIndex !== walletPaymentDownloadedMaxIndex) {
             var maxIndex = walletPaymentCurrentMaxIndex;
 
-            for (var i = walletPaymentDownloadedMaxIndex + 1; i <= maxIndex; i++) {
+            for (var i = parseInt(walletPaymentDownloadedMaxIndex, 10) + 1; i <= maxIndex; i++) {
                 getWalletPayment(i);
                 walletPaymentDownloaded++;
+
+                if (walletPaymentDownloaded > walletPaymentMaxToDownload) {
+                    walletPaymentDownloaded = walletPaymentMaxToDownload;
+                }
             }
 
             walletPaymentDownloadedMaxIndex = maxIndex;
             return;
+        }
+
+        if (walletPaymentDownloaded < walletPaymentMaxToDownload) {
+            for (var i = walletPaymentDownloaded; i <= walletPaymentMaxToDownload; i++) {
+                if (walletPaymentDownloadedMaxIndex - walletPaymentDownloaded === 0) {
+                    break;
+                }
+
+                getWalletPayment(walletPaymentDownloadedMaxIndex - walletPaymentDownloaded);
+                walletPaymentDownloaded++;
+
+                if (walletPaymentDownloaded > walletPaymentMaxToDownload) {
+                    walletPaymentDownloaded = walletPaymentMaxToDownload;
+                }
+            }
         }
     }
 
@@ -187,7 +214,7 @@
         walletStatsUpdateEvent = setInterval(getWalletStats, 5000);
     }
 
-    function onLoopupClick() {
+    function onLookupClick() {
         checkWalletAddress();
     }
 
@@ -222,8 +249,13 @@
         walletTotalInvalidShare.html(0);
         walletTotalPayment.html(0);
 
-        $("#lookup").click(onLoopupClick);
+        $("#lookup").click(onLookupClick);
         walletAddress.keyup(onWalletAddressKeyUp);
+
+        $("#loadMore").click(function () {
+            walletPaymentMaxToDownload += 10;
+            checkWalletPayment();
+        });
 
         getPoolStats();
         setInterval(getPoolStats, 5000);
